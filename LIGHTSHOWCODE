@@ -1,0 +1,250 @@
+#include <FastLED.h>
+
+// How many leds are in the strip?
+#define NUM_LEDS 209
+
+// Data pin that led data will be written out over
+#define DATA_PIN 6
+
+// This is an array of leds.  One item for each led in your strip.
+CRGB leds[NUM_LEDS];
+
+// This function sets up the ledsand tells the controller about them
+void setup() {
+  // sanity check delay - allows reprogramming if accidently blowing power w/leds
+  delay(2000);
+
+  FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+}
+
+void loop() {
+  //Gate for Calcium
+  leds[40] = CRGB::DarkRed;
+  leds[41] = CRGB::DarkRed;
+  //Gate for Sodium
+  leds[115] = CRGB::DarkRed;
+  leds[118] = CRGB::DarkRed;
+
+  //Calcium Channels (6)
+  leds[21] = CRGB::Purple;
+  leds[22] = CRGB::Purple;
+  leds[23] = CRGB::Purple;
+  leds[20] = CRGB::Purple;
+  leds[24] = CRGB::Purple;
+  leds[19] = CRGB::Purple;
+
+  //Potassium in cell
+  leds[152] = CRGB::Red;
+  leds[157] = CRGB::Red;
+  leds[160] = CRGB::Red;
+
+  //Sodium in space
+  leds[95] = CRGB::DarkBlue;
+  leds[107] = CRGB::DarkBlue;
+  leds[113] = CRGB::DarkBlue;
+  leds[60] = CRGB::DarkBlue;
+  leds[68] = CRGB::DarkBlue;
+  leds[76] = CRGB::DarkBlue;
+  leds[98] = CRGB::DarkBlue;
+  leds[108] = CRGB::DarkBlue;
+  leds[106] = CRGB::DarkBlue;
+  leds[63] = CRGB::DarkBlue;
+  leds[69] = CRGB::DarkBlue;
+  leds[82] = CRGB::DarkBlue;
+
+  //Sodium Channels (6)
+  leds[122] = CRGB::DarkBlue;
+  leds[123] = CRGB::DarkBlue;
+  leds[124] = CRGB::DarkBlue;
+  leds[125] = CRGB::DarkBlue;
+  leds[126] = CRGB::DarkBlue;
+  leds[127] = CRGB::DarkBlue;
+
+  //Gate for Sodium
+  leds[139] = CRGB::DarkRed;
+  leds[140] = CRGB::DarkRed;
+
+
+  //Sodium VG Channel (6)
+  leds[148] = CRGB::DarkBlue;
+  leds[144] = CRGB::DarkBlue;
+  leds[145] = CRGB::DarkBlue;
+  leds[146] = CRGB::DarkBlue;
+  leds[147] = CRGB::DarkBlue;
+  leds[149] = CRGB::DarkBlue;
+  leds[197] = CRGB::Black;
+  
+  //Potassium Channel (6)
+  leds[198] = CRGB::Red;
+  leds[199] = CRGB::Red;
+  leds[200] = CRGB::Red;
+  leds[201] = CRGB::Red;
+  leds[202] = CRGB::Red;
+  leds[203] = CRGB::Red;
+  //Gate K
+  leds[206] = CRGB::DarkRed;
+  leds[204] = CRGB::DarkRed;
+  
+  FastLED.show();
+  delay(300);
+  //Action Potential 0-18
+  for (int y=0;y<3;y=y+1){
+  delay(300);
+  
+    for (int x=0; x<17;x = x+1 ){
+     fill_solid( &(leds[x]), 2, CRGB::Yellow );
+     FastLED.show();
+     delay(x*3);
+     fill_solid( &(leds[x]), 2, CRGB::Black );
+     FastLED.show();
+     }
+  leds[40] = CRGB::DarkGreen;
+  leds[41] = CRGB::DarkGreen;
+  };
+  delay(3000);
+  fill_solid( &(leds[0]), 19, CRGB( 0, 0, 0) );
+  //Ca++ ions
+  int g = 25;
+  int h = 29;
+  int i = 32;
+  for (int x = (0); x < 6; x = x + 1) {
+    g = g + x;
+    h = h + x;
+    i = i + x;
+    if (h>32)
+    {
+      g = 25+x;
+      h= 29+x;
+    }
+    leds[g] = CRGB::Purple;
+    leds[h] = CRGB::Purple;
+    leds[i] = CRGB::Purple;
+    // Show the leds (only one of which is set to white, from above)
+    FastLED.show();
+
+    // Wait a little bit
+    delay(350);
+  
+    leds[g] = CRGB::Black;
+    leds[h] = CRGB::Black;
+    leds[i] = CRGB::Black;
+
+}
+  leds[197] = CRGB::Purple;
+  FastLED.show();
+  delay(2000);
+  fill_solid( &(leds[25]), 22, CRGB( 0, 0, 0) );
+  leds[40] = CRGB::DarkRed;
+  leds[41] = CRGB::DarkRed;
+  //Vessicles 48-56
+  fill_solid( &(leds[48]), 3, CRGB::DarkOrange );
+  delay(400);
+   FastLED.show();
+   fill_solid( &(leds[48]), 3, CRGB::Black );
+   fill_solid( &(leds[51]), 3, CRGB::DarkOrange );
+  delay(400);
+  FastLED.show();
+  fill_solid( &(leds[51]), 3, CRGB::Black );
+   fill_solid( &(leds[54]), 3, CRGB::DarkOrange );
+  delay(400);
+  FastLED.show();
+  delay(400);
+  fill_solid( &(leds[48]), 9, CRGB( 0, 0, 0) );
+  //Cleft 57-91
+  for (int x=57; x<92; x=x+4)
+  {
+  fill_solid( &(leds[x]), 2 , CRGB::DarkOrange);
+  }
+    FastLED.show();
+  delay(2000);
+  //AChBinding Site
+  leds[40] = CRGB::DarkRed;
+  leds[41] = CRGB::DarkRed;
+  leds[92] = CRGB::DarkOrange;
+  leds[115] = CRGB::DarkGreen;
+  leds[118] = CRGB::DarkGreen;
+  FastLED.show();
+  //delay(1000);
+  //ACh to AChase 92-99
+      for (int x=57; x<92; x=x+4)
+    {
+    fill_solid( &(leds[x]), 3 , CRGB( 0, 0, 0) );
+    FastLED.show();
+    delay(20);
+    }
+  fill_solid( &(leds[93]), 6, CRGB::DarkOrange );
+  //AChase split 100-102 and 103-105
+  fill_solid( &(leds[100]), 3, CRGB::White );
+  fill_solid( &(leds[103]), 3, CRGB::Green );
+  FastLED.show();
+  delay(2000);
+
+  fill_solid( &(leds[93]), 13, CRGB( 0, 0, 0) );
+  //Sodium in 106-121
+  fill_solid( &(leds[106]), 15, CRGB::DarkBlue );
+  fill_solid( &(leds[57]), 17, CRGB::DarkBlue );
+      for (int x=128; x<138; x=x+4)
+    {
+  fill_solid( &(leds[x]), 2 , CRGB::DarkBlue );
+      
+    }
+  fill_solid( &(leds[140]), 3, CRGB::DarkBlue );
+  leds[138] = CRGB::DarkGreen;
+  leds[140] = CRGB::DarkGreen;
+  FastLED.show();
+  delay(500);
+  fill_solid( &(leds[106]), 15 , CRGB( 0, 0, 0) );
+  fill_solid( &(leds[57]), 34, CRGB::Black );
+  fill_solid( &(leds[128]), 20, CRGB::Black );
+  leds[115] = CRGB::DarkRed;
+  leds[118] = CRGB::DarkRed;
+
+  //Inside of cell 128-138 and 150-160
+
+  fill_solid( &(leds[161]), 18 , CRGB::DarkBlue );
+  fill_solid( &(leds[150]), 10, CRGB::DarkBlue );
+    //Sodium VG Channel (6)
+  leds[148] = CRGB::DarkBlue;
+  leds[144] = CRGB::DarkBlue;
+  leds[145] = CRGB::DarkBlue;
+  leds[146] = CRGB::DarkBlue;
+  leds[147] = CRGB::DarkBlue;
+  leds[149] = CRGB::DarkBlue;
+  FastLED.show();
+  delay(700);
+  leds[204] = CRGB::DarkGreen;
+  leds[206] = CRGB::DarkGreen;
+  FastLED.show();
+  delay(700);
+  fill_solid( &(leds[56]), 10, CRGB::Black );
+      for (int x=129; x<138; x=x+4)
+    {
+     fill_solid( &(leds[x]), 2 , CRGB::Red );
+      
+    }
+  fill_solid( &(leds[75]), 17, CRGB::Red );
+  fill_solid( &(leds[179]), 18 , CRGB::Red);
+  fill_solid( &(leds[204]), 6, CRGB::Red);
+    //Sodium VG Channel (6)
+  leds[148] = CRGB::DarkBlue;
+  leds[144] = CRGB::DarkBlue;
+  leds[145] = CRGB::DarkBlue;
+  leds[146] = CRGB::DarkBlue;
+  leds[147] = CRGB::DarkBlue;
+  leds[149] = CRGB::DarkBlue;
+  FastLED.show();
+  delay(2000);
+  fill_solid( &(leds[128]), 10, CRGB( 0, 0, 0) );
+  fill_solid( &(leds[150]), 10, CRGB( 0, 0, 0) );
+  fill_solid( &(leds[57]), 34, CRGB::Black );
+    fill_solid(&(leds[143]), 2, CRGB::Black);
+    FastLED.show();
+
+  fill_solid( &(leds[0]), 209 , CRGB::Black );
+  FastLED.show();
+  delay(5000);
+  loop();
+};
+
+
+
